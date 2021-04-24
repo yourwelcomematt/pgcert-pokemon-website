@@ -39,15 +39,9 @@ window.addEventListener("load", function () {
         pokemonOfTheDayPanel.appendChild(descriptionElement);
         descriptionElement.style.fontSize = "small";
         descriptionElement.style.textAlign = "justify";
-
-        // const imageAddress = "https://trex-sandwich.com/pokesignment/img/" + randomPokemonObject.image;
-        // const name = randomPokemonObject.name;
-        // const description = randomPokemonObject.description;
-        // const pokemonOfTheDayPanel = document.querySelector("#pokemonOfTheDayPane");
-        // pokemonOfTheDayPanel.innerHTML += `<img src="${imageAddress}"> <h3>${name}</h3> <p>${description}</p>` ;
     };
     
-    function refreshPokemonOfTheDay() {
+    async function refreshPokemonOfTheDay() {
         const imageElement = document.querySelector("#pokemonOfTheDayPane > img");
         const nameElement = document.querySelector("#pokemonOfTheDayPane > h2");
         const descriptionElement = document.querySelector("#pokemonOfTheDayPane > p");
