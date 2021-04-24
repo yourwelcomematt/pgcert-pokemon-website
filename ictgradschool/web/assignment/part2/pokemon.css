@@ -82,6 +82,10 @@ h1 {
     font-size: large;
 }
 
+/* #hamburgerIcon {
+    display: none;   
+} */
+
 @media (max-width: 1000px) {
     #content {
         grid-template-areas: "left left middle right right";
@@ -100,4 +104,8 @@ h1 {
     #navbar {
         justify-content: center;
     }
+    /* #hamburgerIcon {
+        display: block;
+        position: relative;
+    } */
 }
