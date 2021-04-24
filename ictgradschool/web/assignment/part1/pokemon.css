@@ -74,8 +74,30 @@ span > a {
     background-color: lightcoral;
     padding: 0.25em;
     margin: 0.25em;
+    border-radius: 0.25em;
+    border: 1px solid #46ACC2;
 }
 
 h1 {
     font-size: large;
+}
+
+@media (max-width: 1000px) {
+    #content {
+        grid-template-areas: "left left middle right right";
+    }
+}
+
+@media (max-width: 900px) {
+    #content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "right" "middle" "left";
+    }
+    .navItemsRight {
+        display: none;
+    }
+    #navbar {
+        justify-content: center;
+    }
 }
