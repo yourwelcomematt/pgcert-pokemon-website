@@ -37,7 +37,7 @@ div span {
 }
 
 #homeButton {
-    font-size: large;
+    font-size: medium;
 }
 
 span > a {
@@ -46,5 +46,36 @@ span > a {
 }
 
 .navItemsRight {
-    font-size: small;
+    font-size: x-small;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 8fr 2fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: ". left middle right .";
+}
+
+#menuPane {
+    grid-area: left;
+}
+
+#detailsPane {
+    grid-area: middle;
+    text-align: center;
+}
+
+#pokemonOfTheDayPane {
+    grid-area: right;
+    text-align: center;
+}
+
+#content > div {
+    background-color: lightcoral;
+    padding: 0.25em;
+    margin: 0.25em;
+}
+
+h1 {
+    font-size: large;
 }
