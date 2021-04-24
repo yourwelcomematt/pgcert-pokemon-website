@@ -3,3 +3,8 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
 
 
 /* TODO: Your code here */
+window.addEventListener("load", function () {
+
+
+
+});
