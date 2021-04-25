@@ -66,28 +66,7 @@ window.addEventListener("load", function () {
             const pokemonResponseObject = await fetch(pokemonAddress);
             const pokemonObject = await pokemonResponseObject.json();
 
-            generatePokemonPanel(pokemonDetailsPanel, pokemonObject);
-
-            // const pokemonPanel = document.createElement("div");
-            // pokemonPanel.style.backgroundColor = "#46ACC2"
-            // pokemonDetailsPanel.appendChild(pokemonPanel);
-            // pokemonPanel.style.margin = "50px";
-            // pokemonPanel.addEventListener("click", displayClickedPokemonDetails);
-            // pokemonPanel.id = `${pokemon}`
-
-            // const pokemonPanelPictureElement = document.createElement("img");
-            // const pokemonPanelPictureAddress = "https://trex-sandwich.com/pokesignment/img/" + pokemonObject.image;
-            // pokemonPanelPictureElement.src = pokemonPanelPictureAddress;
-            // pokemonPanel.appendChild(pokemonPanelPictureElement);
-            // pokemonPanelPictureElement.id = `${pokemon}`
-
-            // const pokemonPanelNameElement = document.createElement("h2");
-            // const pokemonPanelName = pokemonObject.name;
-            // pokemonPanelNameElement.innerHTML = `<strong id=${pokemon}>${pokemonPanelName}</strong>`;
-            // pokemonPanel.appendChild(pokemonPanelNameElement);
-            // pokemonPanelNameElement.style.fontSize = "medium";
-            // pokemonPanelNameElement.style.paddingBottom = "35px";
-            // pokemonPanelNameElement.id = `${pokemon}`;
+            generatePokemonPanel(pokemonListDiv, pokemonObject);
         };
     };
 
@@ -106,6 +85,7 @@ window.addEventListener("load", function () {
         pokemonPanelPictureElement.src = pokemonPanelPictureAddress;
         pokemonPanel.appendChild(pokemonPanelPictureElement);
         pokemonPanelPictureElement.id = name;
+        pokemonPanelPictureElement.setAttribute("width", "100%");
 
         const pokemonPanelNameElement = document.createElement("h2");
         const pokemonPanelName = pokemonObject.name;
@@ -129,7 +109,7 @@ window.addEventListener("load", function () {
         const clickedPokemonJson = await fetch("https://trex-sandwich.com/pokesignment/pokemon?pokemon=" + clickedPokemon);
         const clickedPokemonObject = await clickedPokemonJson.json();
 
-        console.log(clickedPokemonObject);
+        // console.log(clickedPokemonObject);
 
         const clickedPokemonColumn = document.createElement("div");
         clickedPokemonColumn.style.gridArea = "click";
@@ -155,6 +135,7 @@ window.addEventListener("load", function () {
 
         const clickedPokemonDescriptionElement = document.createElement("p");
         clickedPokemonDescriptionElement.innerHTML = clickedPokemonDescription;
+        clickedPokemonDescriptionElement.style.textAlign = "left";
         clickedPokemonColumn.appendChild(clickedPokemonDescriptionElement);
 
         const weakAgainstText = document.createElement("h2");

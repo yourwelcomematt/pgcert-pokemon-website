@@ -66,6 +66,12 @@ span > a {
     text-align: center;
 }
 
+#pokemonListDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+
 #pokemonOfTheDayPane {
     grid-area: right;
     text-align: center;
