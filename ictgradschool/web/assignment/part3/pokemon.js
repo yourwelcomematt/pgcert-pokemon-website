@@ -9,20 +9,20 @@ window.addEventListener("load", function () {
 
     displayPokemonOfTheDayPanel();
 
-    pokemonOfTheDayPanel.addEventListener("click", refreshPokemonOfTheDayPanel); 
-
     const pokemonDetailsPanel = document.querySelector("#detailsPane");
-
+    
     displayPokemonDetailsPanel();
 
 
-
+    
+    //This function returns a random Pokemon object//
     async function getPokemonOfTheDay() {
         const response = await fetch(`https://trex-sandwich.com/pokesignment/pokemon?random=random`);
         const responseObject = await response.json();
         return responseObject;
     };
     
+    //This function calls the getPokemonOfTheDay() function and 
     async function displayPokemonOfTheDayPanel() {
         const randomPokemonObject = await getPokemonOfTheDay();
 
@@ -30,6 +30,7 @@ window.addEventListener("load", function () {
         const imageAddress = "https://trex-sandwich.com/pokesignment/img/" + randomPokemonObject.image;
         imageElement.src = imageAddress
         imageElement.setAttribute("width", "100%");
+        imageElement.addEventListener("click", refreshPokemonOfTheDayPanel); 
         pokemonOfTheDayPanel.appendChild(imageElement);
 
 
