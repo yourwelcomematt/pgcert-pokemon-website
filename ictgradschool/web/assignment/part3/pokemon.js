@@ -6,15 +6,12 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
 window.addEventListener("load", function () {
 
     const pokemonOfTheDayPanel = document.querySelector("#pokemonOfTheDayPane");
+    const pokemonDetailsPanel = document.querySelector("#detailsPane");
 
     displayPokemonOfTheDayPanel();
-
-    const pokemonDetailsPanel = document.querySelector("#detailsPane");
-    
     displayPokemonDetailsPanel();
 
 
-    
     //This function returns a random Pokemon object//
     async function getPokemonOfTheDay() {
         const response = await fetch(`https://trex-sandwich.com/pokesignment/pokemon?random=random`);
@@ -22,7 +19,10 @@ window.addEventListener("load", function () {
         return responseObject;
     };
     
-    //This function calls the getPokemonOfTheDay() function and 
+    /*
+    This function calls the getPokemonOfTheDay() function and uses the returned random Pokemon object
+    to create the Pokemon of the day panel
+    */
     async function displayPokemonOfTheDayPanel() {
         const randomPokemonObject = await getPokemonOfTheDay();
 
@@ -48,6 +48,7 @@ window.addEventListener("load", function () {
         descriptionElement.style.textAlign = "justify";
     };
     
+    //This function refreshes the Pokemon of the day panel with a new random Pokemon//
     async function refreshPokemonOfTheDayPanel() {
         const imageElement = document.querySelector("#pokemonOfTheDayPane > img");
         const nameElement = document.querySelector("#pokemonOfTheDayPane > h2");
@@ -58,6 +59,7 @@ window.addEventListener("load", function () {
         displayPokemonOfTheDayPanel();
     };
 
+    //This function creates the Pokemon details panel//
     async function displayPokemonDetailsPanel() {
         const pokemonArrayResponse = await fetch(`https://trex-sandwich.com/pokesignment/pokemon`);
         const pokemonArray = await pokemonArrayResponse.json();
@@ -71,6 +73,10 @@ window.addEventListener("load", function () {
         };
     };
 
+    /*
+    This function creates an individual panel for a given Pokemon object which contains the Pokemon's 
+    image and name, and appends it to a specified panel
+    */
     async function generatePokemonPanel(panelToAppendTo, pokemonObject) {
         const name = pokemonObject.name;
         
@@ -97,6 +103,10 @@ window.addEventListener("load", function () {
         pokemonPanelNameElement.id = name;
     };
 
+    /*This function removes all individual Pokemon panels from the Pokemon details panel and gets 
+    the clicked Pokemon's id before calling the generateClickedPokemonDetails() function to create the 
+    clicked Pokemon's profile
+    */
     async function displayClickedPokemonDetails (event) {
         const pokemonDetailsPanelArray = document.querySelectorAll("#detailsPane > div");
         for (i = 0; i < pokemonDetailsPanelArray.length; i++) {
@@ -106,6 +116,7 @@ window.addEventListener("load", function () {
         generateClickedPokemonDetails(clickedPokemon);
     };
     
+    //This function creates the clicked Pokemon's profile//
     async function generateClickedPokemonDetails(clickedPokemon) {
         const clickedPokemonJson = await fetch("https://trex-sandwich.com/pokesignment/pokemon?pokemon=" + clickedPokemon);
         const clickedPokemonObject = await clickedPokemonJson.json();
