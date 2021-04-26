@@ -1,0 +1,148 @@
+:root {
+    --nav-col-bg: #46ACC2;
+    --nav-col-fg: #FFFFFF;
+    --border-rad: 0.25em;
+    --font-stack: Calibri, 'Open Sans', sans-serif;
+    --pane-pad: 0.25em;
+    --pane-margin: 0.25em;
+    --temp-bg-red: lightcoral;
+    --temp-bg-blue: lightblue;
+}
+
+* {
+    font-family: Calibri, 'Open Sans', sans-serif;
+    /* border: black 1px solid; */
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#header {
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+}
+
+#navbar {
+    background-color: #46ACC2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div span {
+    color: #FFFFFF;
+    margin: 20px 15px 20px 15px;
+}
+
+#homeButton {
+    font-size: medium;
+}
+
+span > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navItemsRight {
+    font-size: x-small;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 8fr 2fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: ". left middle right .";
+}
+
+#menuPane {
+    grid-area: left;
+}
+
+#detailsPane {
+    grid-area: middle;
+    text-align: center;
+}
+
+#classesAndMovesDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "classes moves";
+}
+
+#clickedPokemonClasses {
+    grid-area: classes;
+    margin: 5px;
+}
+
+#clickedPokemonMoves {
+    grid-area: moves;
+    margin: 5px;
+}
+
+#classesAndMovesDiv, #clickedPokemonClasses, #clickedPokemonMoves {
+    border: #46ACC2 1px solid;
+}
+
+#clickedPokemonMoves > p {
+    font-size: small;
+    margin: 25px;
+}
+
+#pokemonListDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+
+#pokemonOfTheDayPane {
+    grid-area: right;
+    text-align: center;
+}
+
+#content > div {
+    background-color: lightcoral;
+    padding: 0.25em;
+    margin: 0.25em;
+    border-radius: 0.25em;
+    border: 1px solid #46ACC2;
+}
+
+h1 {
+    font-size: large;
+}
+
+.button {
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 0.25em;
+    color: white;
+    background-color: blue;
+}
+
+@media (max-width: 1000px) {
+    #content {
+        grid-template-areas: "left left middle right right";
+    }
+}
+
+@media (max-width: 900px) {
+    #content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "right" "middle" "left";
+    }
+    .navItemsRight {
+        display: none;
+    }
+    #navbar {
+        justify-content: center;
+    }
+    /* #hamburgerIcon {
+        display: block;
+        position: relative;
+    } */
+}
