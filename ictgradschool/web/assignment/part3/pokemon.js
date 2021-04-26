@@ -145,6 +145,7 @@ window.addEventListener("load", function () {
         const clickedPokemonImageElement = document.createElement("img")
         clickedPokemonImageElement.src = "https://trex-sandwich.com/pokesignment/img/" + clickedPokemonImage;
         clickedPokemonColumn.appendChild(clickedPokemonImageElement);
+        clickedPokemonImageElement.setAttribute("width", "100%")
 
         const clickedPokemonDescriptionElement = document.createElement("p");
         clickedPokemonDescriptionElement.innerHTML = clickedPokemonDescription;
