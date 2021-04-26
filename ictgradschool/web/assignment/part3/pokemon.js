@@ -101,7 +101,7 @@ window.addEventListener("load", function () {
         pokemonPanelNameElement.style.fontSize = "medium";
         pokemonPanelNameElement.style.paddingBottom = "10px";
         pokemonPanelNameElement.id = name;
-        pokemonPanelNameElement.setAttribute("width, 100")
+        pokemonPanelNameElement.setAttribute("width", "100")
     };
 
     /*This function removes all individual Pokemon panels from the Pokemon details panel and gets 
