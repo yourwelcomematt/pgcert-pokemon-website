@@ -66,6 +66,32 @@ span > a {
     text-align: center;
 }
 
+#classesAndMovesDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "classes moves";
+}
+
+#clickedPokemonClasses {
+    grid-area: classes;
+    margin: 5px;
+}
+
+#clickedPokemonMoves {
+    grid-area: moves;
+    margin: 5px;
+}
+
+#classesAndMovesDiv, #clickedPokemonClasses, #clickedPokemonMoves {
+    border: #46ACC2 1px solid;
+}
+
+#clickedPokemonMoves > p {
+    font-size: small;
+    margin: 25px;
+}
+
 #pokemonListDiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

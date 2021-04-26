@@ -101,7 +101,7 @@ window.addEventListener("load", function () {
         pokemonPanelNameElement.style.fontSize = "medium";
         pokemonPanelNameElement.style.paddingBottom = "10px";
         pokemonPanelNameElement.id = name;
-        pokemonPanelNameElement.setAttribute("width, 100")
+        pokemonPanelNameElement.setAttribute("width", "100")
     };
 
     /*This function removes all individual Pokemon panels from the Pokemon details panel and gets 
@@ -145,11 +145,47 @@ window.addEventListener("load", function () {
         const clickedPokemonImageElement = document.createElement("img")
         clickedPokemonImageElement.src = "https://trex-sandwich.com/pokesignment/img/" + clickedPokemonImage;
         clickedPokemonColumn.appendChild(clickedPokemonImageElement);
+        clickedPokemonImageElement.setAttribute("width", "100%")
 
         const clickedPokemonDescriptionElement = document.createElement("p");
         clickedPokemonDescriptionElement.innerHTML = clickedPokemonDescription;
         clickedPokemonDescriptionElement.style.textAlign = "left";
         clickedPokemonColumn.appendChild(clickedPokemonDescriptionElement);
+
+
+
+
+
+        const clickedPokemonClassesAndMovesDiv = document.createElement("div");
+        clickedPokemonClassesAndMovesDiv.id = "classesAndMovesDiv";
+        const clickedPokemonClasses = document.createElement("div");
+        clickedPokemonClasses.id = "clickedPokemonClasses";
+        const clickedPokemonMoves = document.createElement("div");
+        clickedPokemonMoves.id = "clickedPokemonMoves";
+
+        // clickedPokemonClasses.style.gridArea = "classes";
+        // clickedPokemonMoves.style.gridArea = "moves";
+
+        const classTitle = document.createElement("h2");
+        classTitle.innerHTML = "Class List";
+        classTitle.style.fontSize = "medium";
+        clickedPokemonClasses.appendChild(classTitle);
+
+        const movesTitle = document.createElement("h2");
+        movesTitle.innerHTML = "Signature Moves";
+        movesTitle.style.fontSize = "medium";
+        clickedPokemonMoves.appendChild(movesTitle);
+
+        generateClassesBox(clickedPokemonObject, clickedPokemonClasses);
+        generateMovesBox(clickedPokemonObject, clickedPokemonMoves);
+        
+        clickedPokemonClassesAndMovesDiv.appendChild(clickedPokemonClasses);
+        clickedPokemonClassesAndMovesDiv.appendChild(clickedPokemonMoves);
+        clickedPokemonColumn.appendChild(clickedPokemonClassesAndMovesDiv);
+
+
+
+
 
         const weakAgainstText = document.createElement("h2");
         weakAgainstText.innerHTML = "Weak Against"
@@ -184,10 +220,11 @@ window.addEventListener("load", function () {
 
         const detailsPaneTitle = document.querySelector("#detailsPane > h1")
         detailsPaneTitle.style.gridArea = "title";
+        clickedPokemonClassesAndMovesDiv.gridArea = "movesClasses"
         pokemonDetailsPanel.style.display = "grid";
         pokemonDetailsPanel.style.gridTemplateColumns = "1fr 2fr 1fr";
-        pokemonDetailsPanel.style.gridTemplateRows = "auto auto";
-        pokemonDetailsPanel.style.gridTemplateAreas = `"title title title" "weak click strong"`
+        pokemonDetailsPanel.style.gridTemplateRows = "auto auto auto";
+        pokemonDetailsPanel.style.gridTemplateAreas = `"title title title" "weak click strong" ". movesClasses ."`
     };
 
     // async function generateAgainstPanels(array, panelToAppendTo) {
@@ -198,5 +235,38 @@ window.addEventListener("load", function () {
     //         generatePokemonPanel(panelToAppendTo, againstObject);
     //     };
     // };
+
+    async function generateClassesBox(pokemonObject, div) {
+        const classArray = pokemonObject.classes;
+        console.log(classArray);
+        for (i = 0; i < classArray.length; i++) {
+            // console.log(classArray[i])
+            const classType = classArray[i]
+            const coloringAddress = "https://trex-sandwich.com/pokesignment/keyword?keyword=" + classType;
+            // console.log(classType);
+            // const coloringResponse = await fetch (coloringAddress);
+            // const coloringObject = await coloringResponse.json();
+            // const classTextElement = await setClassColor(classType, coloringObject);
+            // div.innerHTML += classTextElement;
+            // console.log(coloringObject)
+        }
+    };
+
+    // async function setClassColor(classText, coloringObject) {
+    //     const classTextElement = document.createElement("p");
+    //     classTextElement.style.border = "1px solid black"
+    //     classTextElement.innerHTML = classText.toUpperCase();
+    //     classTextElement.style.color = await coloringObject.background;
+    //     classTextElement.backgroundColor = await coloringObject.foreground;
+    //     return classTextElement;
+    // };
+
+    function generateMovesBox(pokemonObject, div) {
+        const name = pokemonObject.name;
+        const movesArray = pokemonObject.signature_skills;
+        for (i = 0; i < movesArray.length; i++) {
+            div.innerHTML += `<p>${movesArray[i]}</p>`
+        }
+    };
 
 });
