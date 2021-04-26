@@ -146,11 +146,6 @@ span > a {
     margin: 5px;
 }
 
-#clickedPokemonClasses, #clickedPokemonMoves {
-    /* border: red 2px solid; */
-    /* margin: 30px; */
-}
-
 #clickedPokemonMoves > p {
     font-size: small;
     margin: 25px;
@@ -193,3 +188,4 @@ h2 {
     #navbar {
         justify-content: center;
     }
+}
