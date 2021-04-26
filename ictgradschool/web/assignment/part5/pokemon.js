@@ -13,13 +13,16 @@ window.addEventListener("load", function () {
     displayPokemonDetailsPanel();
 
     const randomPokemonButton = document.querySelector("#loadButton");
-    const pokemonListButton = document.querySelector("#listButton");
-
-    console.log(randomPokemonButton);
-    console.log(pokemonListButton);
+    const navRandomPokemonButton = document.querySelector("#navRandomPokemonButton");
+    const showListButton = document.querySelector("#listButton");
+    const navShowListButton = document.querySelector("#navShowPokemonList");
+    const navPokemonOfTheDay = document.querySelector("#navShowPokemonOfTheDay");
 
     randomPokemonButton.addEventListener("click", loadRandomPokemon);
-    pokemonListButton.addEventListener("click", showPokemonList);
+    navRandomPokemonButton.addEventListener("click", loadRandomPokemon);
+    showListButton.addEventListener("click", showPokemonList);
+    navShowListButton.addEventListener("click", showPokemonList);
+    // navPokemonOfTheDay.addEventListener("click", displayClickedPokemonDetails)
 
 
 
@@ -60,11 +63,16 @@ window.addEventListener("load", function () {
 
         const buttonElement = document.createElement("button");
         buttonElement.innerHTML = "Show Details";
-        buttonElement.id = "detailsButton";
+        buttonElement.id = name;
         buttonElement.setAttribute("class", "button");
         buttonElement.setAttribute("type", "button");
         pokemonOfTheDayPanel.appendChild(buttonElement);
-        // pokemonOfTheDayPanel.innerHTML += `<button type="button" class="button" id="detailsButton">Show Details</button>`;
+        buttonElement.addEventListener("click", displayClickedPokemonDetails);
+
+        // const navPokemonOfTheDay = document.querySelector("#navShowPokemonOfTheDay");
+        navPokemonOfTheDay.id = name;
+        navPokemonOfTheDay.addEventListener("click", displayClickedPokemonDetails)
+        
     };
     
     //This function refreshes the Pokemon of the day panel with a new random Pokemon//
@@ -72,11 +80,12 @@ window.addEventListener("load", function () {
         const imageElement = document.querySelector("#pokemonOfTheDayPane > img");
         const nameElement = document.querySelector("#pokemonOfTheDayPane > h2");
         const descriptionElement = document.querySelector("#pokemonOfTheDayPane > p");
-        const buttonElement = document.querySelector("#detailsButton");
+        const buttonElement = document.querySelector("#pokemonOfTheDayPane > button");
         imageElement.remove();
         nameElement.remove();
         descriptionElement.remove();
         buttonElement.remove();
+        navPokemonOfTheDay.id = "";
         displayPokemonOfTheDayPanel();
     };
 
