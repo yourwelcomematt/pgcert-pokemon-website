@@ -10,7 +10,7 @@
 }
 
 * {
-    font-family: Calibri, 'Open Sans', sans-serif;
+    font-family: Calibri, Roboto, 'Open Sans', sans-serif;
     /* border: black 1px solid; */
 }
 
@@ -19,26 +19,60 @@ body {
     margin: 0;
 }
 
-#header {
-    background-color: grey;
-    display: flex;
-    justify-content: center;
+#logo {
+    margin: 25px;
+    animation-name: slide-right;
+    animation-duration: 2s;
 }
 
-#navbar {
-    background-color: #46ACC2;
+@keyframes slide-right {
+    from{
+        margin-top: 100%;
+    }
+    to{
+        margin-bottom: 0%;
+    }
+}
+
+.pokeballs {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#header {
+    background-color: orange;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-div span {
-    color: #FFFFFF;
-    margin: 20px 15px 20px 15px;
+#navbar {
+    background-color: #10cde6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #homeButton {
-    font-size: medium;
+    font-size: large;
+    font-weight: bold;
+}
+
+div span {
+    color: black;
+    margin: 20px 15px 20px 15px;
+    padding: 5px;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+div span, .button, .panel {
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+div span:hover, .button:hover, .panel:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 span > a {
@@ -47,7 +81,18 @@ span > a {
 }
 
 .navItemsRight {
-    font-size: x-small;
+    font-size: small;
+}
+
+.title {
+    margin: 25px;
+}
+
+.button {
+    width: 70%;
+    margin-bottom: 10px;
+    border-radius: 0.25em;
+    background-color: #10cde6;
 }
 
 #content {
@@ -57,8 +102,16 @@ span > a {
     grid-template-areas: ". left middle right .";
 }
 
+#content > div {
+    background-color: orange;
+    padding: 0.25em;
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
 #menuPane {
     grid-area: left;
+    text-align: center;
 }
 
 #detailsPane {
@@ -66,11 +119,21 @@ span > a {
     text-align: center;
 }
 
+.panel {
+    background-color: #10cde6;
+    margin: 25px;
+    border-radius: 45px;
+}
+
 #classesAndMovesDiv {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: "classes moves";
+    background-color: #10cde6;
+    border: red 5px solid;
+    border-radius: 20px;
+    margin-bottom: 15px;
 }
 
 #clickedPokemonClasses {
@@ -83,8 +146,9 @@ span > a {
     margin: 5px;
 }
 
-#classesAndMovesDiv, #clickedPokemonClasses, #clickedPokemonMoves {
-    border: #46ACC2 1px solid;
+#clickedPokemonClasses, #clickedPokemonMoves {
+    /* border: red 2px solid; */
+    /* margin: 30px; */
 }
 
 #clickedPokemonMoves > p {
@@ -103,24 +167,12 @@ span > a {
     text-align: center;
 }
 
-#content > div {
-    background-color: lightcoral;
-    padding: 0.25em;
-    margin: 0.25em;
-    border-radius: 0.25em;
-    border: 1px solid #46ACC2;
-}
-
 h1 {
     font-size: large;
 }
 
-.button {
-    width: 100%;
-    margin-bottom: 5px;
-    border-radius: 0.25em;
-    color: white;
-    background-color: blue;
+h2 {
+    font-size: medium;
 }
 
 @media (max-width: 1000px) {
@@ -141,8 +193,3 @@ h1 {
     #navbar {
         justify-content: center;
     }
-    /* #hamburgerIcon {
-        display: block;
-        position: relative;
-    } */
-}

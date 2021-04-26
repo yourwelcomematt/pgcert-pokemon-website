@@ -5,11 +5,15 @@
         <title>Pokemon</title>
         <link rel="stylesheet" type="text/css" href="pokemon.css">
         <script type="text/javascript" src="pokemon.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">   
     </head>
     <body id="container">
         <!-- TODO: Your HTML here-->
         <div id="header">
+            <img src="https://pngimg.com/uploads/pokeball/pokeball_PNG24.png" height="150px" class="pokeballs">
             <img src="https://trex-sandwich.com/pokesignment/img/logo.svg" id="logo" height="150px">
+            <img src="https://pngimg.com/uploads/pokeball/pokeball_PNG24.png" height="150px" class="pokeballs">
         </div>
         <div id="navbar">
             <span id="homeButton">
@@ -20,34 +24,19 @@
                 <span class="navItemsRight" id="navShowPokemonList">Show Pokemon List</span>
                 <span class="navItemsRight" id="navShowPokemonOfTheDay">Show Pokemon of the Day</span>
             </div>
-            
-            <!-- <div id="hamburgerIcon">
-                <input type="checkbox">
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <ul id="hamburgerMenu">
-                    <a><li>Load Random Pokemon</li></a>
-                    <a><li>Show Pokemon List</li></a>
-                    <a><li>Show Pokemon of the Day</li></a>
-                </ul>
-            </div> -->
-
         </div>
         <div id="content">
             <div id="menuPane" class="pane">
-                <h1>Menu</h1>
+                <h1 class="title">Menu</h1>
                 <button type="button" class="button" id="loadButton">Load Random Pokemon</button>
                 <button type="button" class="button" id="listButton">Show List of Pokemon</button>
             </div>
             <div id="detailsPane" class="pane">
-                <h1>Pokemon Details</h1>
+                <h1 id="detailsPaneTitle" class="title">Pokemon Details</h1>
                 <div id="pokemonListDiv"></div>
             </div>
             <div id="pokemonOfTheDayPane" class="pane">
-                <h1>Pokemon of the Day</h1>
+                <h1 class="title">Pokemon of the Day</h1>
             </div>
         </div>
     </body>

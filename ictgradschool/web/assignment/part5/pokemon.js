@@ -182,10 +182,6 @@ window.addEventListener("load", function () {
         clickedPokemonDescriptionElement.style.textAlign = "left";
         clickedPokemonColumn.appendChild(clickedPokemonDescriptionElement);
 
-
-
-
-
         const clickedPokemonClassesAndMovesDiv = document.createElement("div");
         clickedPokemonClassesAndMovesDiv.id = "classesAndMovesDiv";
         const clickedPokemonClasses = document.createElement("div");
@@ -206,16 +202,12 @@ window.addEventListener("load", function () {
         movesTitle.style.fontSize = "medium";
         clickedPokemonMoves.appendChild(movesTitle);
 
-        // generateClassesBox(clickedPokemonObject, clickedPokemonClasses);
+        generateClassesBox(clickedPokemonObject, clickedPokemonClasses);
         generateMovesBox(clickedPokemonObject, clickedPokemonMoves);
         
         clickedPokemonClassesAndMovesDiv.appendChild(clickedPokemonClasses);
         clickedPokemonClassesAndMovesDiv.appendChild(clickedPokemonMoves);
         clickedPokemonColumn.appendChild(clickedPokemonClassesAndMovesDiv);
-
-
-
-
 
         const weakAgainstText = document.createElement("h2");
         weakAgainstText.innerHTML = "Weak Against"
@@ -265,6 +257,14 @@ window.addEventListener("load", function () {
     //         generatePokemonPanel(panelToAppendTo, againstObject);
     //     };
     // };
+
+    //This function creates the class list box//
+    async function generateClassesBox(pokemonObject, div) {
+        const classArray = pokemonObject.classes;
+        for (i = 0; i < classArray.length; i++) {
+            div.innerHTML += `<p>${classArray[i]}</p>`;
+        };
+    };
 
     // async function generateClassesBox(pokemonObject, div) {
     //     const classArray = pokemonObject.classes;
