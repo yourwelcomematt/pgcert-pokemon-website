@@ -11,7 +11,7 @@
 
 * {
     font-family: Calibri, 'Open Sans', sans-serif;
-    /* border: black 1px solid; */
+    border: black 1px solid;
 }
 
 body {
@@ -115,9 +115,13 @@ h1 {
     font-size: large;
 }
 
-/* #hamburgerIcon {
-    display: none;   
-} */
+.button {
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 0.25em;
+    color: white;
+    background-color: blue;
+}
 
 @media (max-width: 1000px) {
     #content {

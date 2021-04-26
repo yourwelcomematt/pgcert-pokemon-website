@@ -7,9 +7,20 @@ window.addEventListener("load", function () {
 
     const pokemonOfTheDayPanel = document.querySelector("#pokemonOfTheDayPane");
     const pokemonDetailsPanel = document.querySelector("#detailsPane");
+    // const pokemonDetailsListDiv = document.querySelector("#pokemonListDiv");
 
     displayPokemonOfTheDayPanel();
     displayPokemonDetailsPanel();
+
+    const randomPokemonButton = document.querySelector("#loadButton");
+    const pokemonListButton = document.querySelector("#listButton");
+
+    console.log(randomPokemonButton);
+    console.log(pokemonListButton);
+
+    randomPokemonButton.addEventListener("click", loadRandomPokemon);
+    pokemonListButton.addEventListener("click", showPokemonList);
+
 
 
     //This function returns a random Pokemon object//
@@ -46,6 +57,14 @@ window.addEventListener("load", function () {
         pokemonOfTheDayPanel.appendChild(descriptionElement);
         descriptionElement.style.fontSize = "small";
         descriptionElement.style.textAlign = "justify";
+
+        const buttonElement = document.createElement("button");
+        buttonElement.innerHTML = "Show Details";
+        buttonElement.id = "detailsButton";
+        buttonElement.setAttribute("class", "button");
+        buttonElement.setAttribute("type", "button");
+        pokemonOfTheDayPanel.appendChild(buttonElement);
+        // pokemonOfTheDayPanel.innerHTML += `<button type="button" class="button" id="detailsButton">Show Details</button>`;
     };
     
     //This function refreshes the Pokemon of the day panel with a new random Pokemon//
@@ -53,14 +72,17 @@ window.addEventListener("load", function () {
         const imageElement = document.querySelector("#pokemonOfTheDayPane > img");
         const nameElement = document.querySelector("#pokemonOfTheDayPane > h2");
         const descriptionElement = document.querySelector("#pokemonOfTheDayPane > p");
+        const buttonElement = document.querySelector("#detailsButton");
         imageElement.remove();
         nameElement.remove();
         descriptionElement.remove();
+        buttonElement.remove();
         displayPokemonOfTheDayPanel();
     };
 
     //This function creates the Pokemon details panel//
     async function displayPokemonDetailsPanel() {
+        const pokemonDetailsListDiv = document.querySelector("#pokemonListDiv");
         const pokemonArrayResponse = await fetch(`https://trex-sandwich.com/pokesignment/pokemon`);
         const pokemonArray = await pokemonArrayResponse.json();
         for (let i = 0; i < pokemonArray.length; i++ ) {
@@ -69,7 +91,7 @@ window.addEventListener("load", function () {
             const pokemonResponseObject = await fetch(pokemonAddress);
             const pokemonObject = await pokemonResponseObject.json();
 
-            generatePokemonPanel(pokemonListDiv, pokemonObject);
+            generatePokemonPanel(pokemonDetailsListDiv, pokemonObject);
         };
     };
 
@@ -95,7 +117,6 @@ window.addEventListener("load", function () {
         pokemonPanelPictureElement.setAttribute("width", "100%");
 
         const pokemonPanelNameElement = document.createElement("h2");
-        const pokemonPanelName = pokemonObject.name;
         pokemonPanelNameElement.innerHTML = `<strong id=${name}>${name}</strong>`;
         pokemonPanel.appendChild(pokemonPanelNameElement);
         pokemonPanelNameElement.style.fontSize = "medium";
@@ -176,7 +197,7 @@ window.addEventListener("load", function () {
         movesTitle.style.fontSize = "medium";
         clickedPokemonMoves.appendChild(movesTitle);
 
-        generateClassesBox(clickedPokemonObject, clickedPokemonClasses);
+        // generateClassesBox(clickedPokemonObject, clickedPokemonClasses);
         generateMovesBox(clickedPokemonObject, clickedPokemonMoves);
         
         clickedPokemonClassesAndMovesDiv.appendChild(clickedPokemonClasses);
@@ -236,21 +257,21 @@ window.addEventListener("load", function () {
     //     };
     // };
 
-    async function generateClassesBox(pokemonObject, div) {
-        const classArray = pokemonObject.classes;
-        console.log(classArray);
-        for (i = 0; i < classArray.length; i++) {
+    // async function generateClassesBox(pokemonObject, div) {
+    //     const classArray = pokemonObject.classes;
+    //     console.log(classArray);
+    //     for (i = 0; i < classArray.length; i++) {
             // console.log(classArray[i])
-            const classType = classArray[i]
-            const coloringAddress = "https://trex-sandwich.com/pokesignment/keyword?keyword=" + classType;
+            // const classType = classArray[i]
+            // const coloringAddress = "https://trex-sandwich.com/pokesignment/keyword?keyword=" + classType;
             // console.log(classType);
             // const coloringResponse = await fetch (coloringAddress);
             // const coloringObject = await coloringResponse.json();
             // const classTextElement = await setClassColor(classType, coloringObject);
             // div.innerHTML += classTextElement;
             // console.log(coloringObject)
-        }
-    };
+    //     }
+    // };
 
     // async function setClassColor(classText, coloringObject) {
     //     const classTextElement = document.createElement("p");
@@ -269,4 +290,25 @@ window.addEventListener("load", function () {
         }
     };
 
+    async function loadRandomPokemon() {
+        const randomPokemonObject = await getPokemonOfTheDay();
+        clearPokemonDetailsPanel();
+        await generateClickedPokemonDetails(randomPokemonObject.name);
+    };
+
+    async function showPokemonList() {
+        clearPokemonDetailsPanel();
+        const replacementDiv = document.createElement("div");
+        replacementDiv.id = "pokemonListDiv"
+        // replacementDiv.setAttribute("class", "replacementDiv")
+        pokemonDetailsPanel.appendChild(replacementDiv);
+        await displayPokemonDetailsPanel();
+    };
+
+    async function clearPokemonDetailsPanel() {
+        const pokemonDetailsPanelArray = document.querySelectorAll("#detailsPane > div");
+        for (i = 0; i < pokemonDetailsPanelArray.length; i++) {
+            pokemonDetailsPanelArray[i].remove();
+        }
+    };
 });
