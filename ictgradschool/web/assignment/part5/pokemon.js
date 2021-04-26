@@ -300,8 +300,10 @@ window.addEventListener("load", function () {
         clearPokemonDetailsPanel();
         const replacementDiv = document.createElement("div");
         replacementDiv.id = "pokemonListDiv"
-        // replacementDiv.setAttribute("class", "replacementDiv")
         pokemonDetailsPanel.appendChild(replacementDiv);
+        pokemonDetailsPanel.style.display = "grid";
+        pokemonDetailsPanel.style.gridTemplateColumns = "1fr";
+        pokemonDetailsPanel.style.gridTemplateRows = "auto";
         await displayPokemonDetailsPanel();
     };
 
