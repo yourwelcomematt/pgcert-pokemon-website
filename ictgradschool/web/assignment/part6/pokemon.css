@@ -10,7 +10,7 @@
 }
 
 * {
-    font-family: Calibri, Roboto, 'Open Sans', sans-serif;
+    font-family: Calibri, Balsamiq Sans, 'Open Sans', sans-serif;
     /* border: black 1px solid; */
 }
 
@@ -21,16 +21,15 @@ body {
 
 #logo {
     margin: 25px;
-    animation-name: slide-right;
+    animation-name: drop-down;
     animation-duration: 2s;
 }
 
-@keyframes slide-right {
+@keyframes drop-down {
     from{
         margin-top: 100%;
     }
-    to{
-        margin-bottom: 0%;
+    to{    
     }
 }
 
@@ -144,11 +143,6 @@ span > a {
 #clickedPokemonMoves {
     grid-area: moves;
     margin: 5px;
-}
-
-#clickedPokemonMoves > p {
-    font-size: small;
-    margin: 25px;
 }
 
 #pokemonListDiv {

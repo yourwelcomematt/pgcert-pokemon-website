@@ -183,12 +183,14 @@ window.addEventListener("load", function () {
         clickedPokemonClasses.id = "clickedPokemonClasses";
         clickedPokemonMoves.id = "clickedPokemonMoves";
 
-        const classTitle = document.createElement("h2");
+        const classTitle = document.createElement("p");
         classTitle.innerHTML = "Class List";
+        classTitle.style.fontSize = "130%";
         clickedPokemonClasses.appendChild(classTitle);
 
-        const movesTitle = document.createElement("h2");
+        const movesTitle = document.createElement("p");
         movesTitle.innerHTML = "Signature Moves";
+        movesTitle.style.fontSize = "130%";
         clickedPokemonMoves.appendChild(movesTitle);
 
         generateClassesBox(clickedPokemonObject, clickedPokemonClasses);
