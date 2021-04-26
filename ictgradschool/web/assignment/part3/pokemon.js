@@ -99,7 +99,7 @@ window.addEventListener("load", function () {
         pokemonPanelNameElement.innerHTML = `<strong id=${name}>${name}</strong>`;
         pokemonPanel.appendChild(pokemonPanelNameElement);
         pokemonPanelNameElement.style.fontSize = "medium";
-        pokemonPanelNameElement.style.paddingBottom = "35px";
+        pokemonPanelNameElement.style.paddingBottom = "10px";
         pokemonPanelNameElement.id = name;
     };
 
