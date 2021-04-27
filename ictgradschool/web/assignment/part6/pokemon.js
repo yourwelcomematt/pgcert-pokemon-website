@@ -23,6 +23,18 @@ window.addEventListener("load", function () {
     navShowListButton.addEventListener("click", showPokemonList);
 
 
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+
+
     //This function returns a random Pokemon object
     async function getPokemonOfTheDay() {
         const response = await fetch(`https://trex-sandwich.com/pokesignment/pokemon?random=random`);

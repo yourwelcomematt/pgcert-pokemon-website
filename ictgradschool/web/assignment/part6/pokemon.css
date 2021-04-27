@@ -52,12 +52,18 @@ body {
     justify-content: space-between;
 }
 
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #homeButton {
     font-size: large;
     font-weight: bold;
 }
 
-div span {
+#homeButton, .navItemsRight {
     color: black;
     margin: 20px 15px 20px 15px;
     padding: 5px;
@@ -65,12 +71,13 @@ div span {
     transition-duration: 0.5s;
 }
 
-div span, .button, .panel {
+#homeButton, .navItemsRight, .button, .panel {
     transition-property: background-color;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
-div span:hover, .button:hover, .panel:hover {
+#homeButton:hover, .navItemsRight:hover, .button:hover, .panel:hover {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -81,6 +88,25 @@ span > a {
 
 .navItemsRight {
     font-size: small;
+}
+
+.hamburger {
+    display: none;
+    margin-right: 15px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+
+#blankSpan {
+    display: none;
 }
 
 .title {
@@ -176,10 +202,61 @@ h2 {
         grid-template-rows: 1fr 1fr 1fr;
         grid-template-areas: "right" "middle" "left";
     }
-    .navItemsRight {
+    /* #navbar {
+        justify-content: center;
+    } */
+    .pokeballs {
         display: none;
     }
-    #navbar {
+    #header {
         justify-content: center;
     }
+    #navbar {
+        justify-content: space-between;
+    }
+    #blankSpan {
+        display: flex;
+        visibility: hidden;
+    }
+    #homeButton {
+        position: relative;
+        left: -25px;
+    }
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+    .nav-menu {
+        position: fixed;
+        right: -110%;
+        top: 17.5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 98%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+        border: 4px solid red;
+    }
+    .nav-menu.active {
+        right: 4px;
+    }
+    .navItemsRight {
+        margin: 20px;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
 }

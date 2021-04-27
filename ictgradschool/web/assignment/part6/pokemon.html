@@ -7,22 +7,29 @@
         <script type="text/javascript" src="pokemon.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Roboto:wght@300;400;500;700&family=Yanone+Kaffeesatz:wght@400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body id="container">
         <!-- TODO: Your HTML here-->
         <div id="header">
             <img src="https://pngimg.com/uploads/pokeball/pokeball_PNG24.png" height="150px" class="pokeballs">
-            <img src="https://trex-sandwich.com/pokesignment/img/logo.svg" id="logo" height="150px">
+            <a href="https://www.youtube.com/watch?v=6xKWiCMKKJg"><img src="https://trex-sandwich.com/pokesignment/img/logo.svg" id="logo" height="150px"></a>
             <img src="https://pngimg.com/uploads/pokeball/pokeball_PNG24.png" height="150px" class="pokeballs">
         </div>
         <div id="navbar">
+            <span id="blankSpan">Blank Span</span>
             <span id="homeButton">
                 <a href="https://www.pokemon.com/us/">Home</a>
             </span>
-            <div>
+            <div id="navButtons" class="nav-menu">
                 <span class="navItemsRight" id="navRandomPokemonButton">Load Random Pokemon</span>
                 <span class="navItemsRight" id="navShowPokemonList">Show Pokemon List</span>
                 <span class="navItemsRight" id="navShowPokemonOfTheDay">Show Pokemon of the Day</span>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
         <div id="content">
