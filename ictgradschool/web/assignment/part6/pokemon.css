@@ -202,9 +202,7 @@ h2 {
         grid-template-rows: 1fr 1fr 1fr;
         grid-template-areas: "right" "middle" "left";
     }
-    /* #navbar {
-        justify-content: center;
-    } */
+
     .pokeballs {
         display: none;
     }
